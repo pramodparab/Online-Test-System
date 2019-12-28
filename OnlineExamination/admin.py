@@ -5,7 +5,7 @@ admin.site.site_header = "Content Admin"
 
 
 class QuestionModelAdmin(admin.ModelAdmin):
-    list_display = ["question", "exam_name", "marks","option1","option2","option3","option4"]
+    list_display = ["question", "exam_name", "marks","option1","option2","option3","option4","solution"]
 
     class Meta:
         model = Question
