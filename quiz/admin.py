@@ -10,4 +10,6 @@ class SetModelAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Set, SetModelAdmin)
+
+
 admin.site.register(Result)
