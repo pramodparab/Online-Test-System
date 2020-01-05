@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Student, Question, Exams
+from .models import Student, Question, Exams , Subject	,Chapter, Topic	
 
 admin.site.site_header = "Content Admin"
 
@@ -23,6 +23,13 @@ class ExamModelAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Exams, ExamModelAdmin)
+
+
+admin.site.register(Subject)
+
+admin.site.register(Chapter)
+
+admin.site.register(Topic)
 
 
 
