@@ -41,23 +41,23 @@ class Exams(models.Model):
 
 class Subject(models.Model):
     subject_name = models.CharField(max_length=25)
-    exam_name = models.ForeignKey(Exams,on_delete=models.CASCADE)
+    exam_name = models.ForeignKey(Exams,on_delete=models.CASCADE,default=0)
 
     def __str__(self):
         return str(self.subject_name)
 
 class Chapter(models.Model):
     chapter_name = models.CharField(max_length=30)
-    subject_name = models.ForeignKey(Subject, on_delete=models.CASCADE)
+    subject_name = models.ForeignKey(Subject, on_delete=models.CASCADE,default=0)
 
     def __str__(self):
         return str(self.chapter_name)
 
 class Topic(models.Model):
-    topic_name = models.CharField (max_length=50)
-    chapter_name=models.ForeignKey(Chapter,on_delete=models.CASCADE)
+    topic_name = models.CharField(max_length=50)
+    chapter_name=models.ForeignKey(Chapter,on_delete=models.CASCADE,default=0)
 
-    def __str__(self):
+    def __str__(self):  
         return str(self.topic_name)    
 
     
@@ -65,6 +65,9 @@ class Topic(models.Model):
 class Question(models.Model):
     id = models.AutoField(primary_key=True, unique=True)
     exam_name = models.ForeignKey(Exams, on_delete=models.CASCADE)
+    subject_name = models.ForeignKey(Subject,on_delete=models.CASCADE,default=0)
+    chapter_name = models.ForeignKey(Chapter,on_delete = models.CASCADE,default=0)
+    topic_name = models.ForeignKey(Topic,on_delete = models.CASCADE,default=0)
     marks = models.PositiveIntegerField(default=0)
     question = RichTextUploadingField()
     option1 = RichTextUploadingField(max_length=100)
